@@ -1,5 +1,6 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
 import { useSession } from "../services/auth";
+import OpenLayout from "../layouts/Open";
 
 export default function Home() {
   const [session, loading] = useSession();
@@ -7,8 +8,8 @@ export default function Home() {
   if (loading) return <h1>Loading..</h1>;
 
   return (
-    <Box>
+    <OpenLayout>
       <Heading color="red.500">{JSON.stringify(session)}</Heading>
-    </Box>
+    </OpenLayout>
   );
 }
