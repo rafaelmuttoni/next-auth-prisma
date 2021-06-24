@@ -36,7 +36,7 @@ export default function Login() {
           <Heading fontSize={"4xl"}>Entre na sua conta</Heading>
           <Text fontSize={"lg"} color={"gray.600"}>
             para aproveitar todas nossas funcionalidades{" "}
-            <Text fontWeight="bold" as="span" color="brand.500">
+            <Text fontWeight="bold" as="span" color="brand.600">
               fodas ✌️
             </Text>
           </Text>
