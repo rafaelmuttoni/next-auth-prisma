@@ -81,7 +81,7 @@ export default function WithSubnavigation() {
           <NextLink href="/register">
             <Button
               display={{ base: "none", md: "inline-flex" }}
-              colorScheme="teal"
+              colorScheme="brand"
               as="a"
             >
               Cadastrar-se

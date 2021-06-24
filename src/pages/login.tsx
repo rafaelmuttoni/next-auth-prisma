@@ -36,7 +36,7 @@ export default function Login() {
           <Heading fontSize={"4xl"}>Entre na sua conta</Heading>
           <Text fontSize={"lg"} color={"gray.600"}>
             para aproveitar todas nossas funcionalidades{" "}
-            <Text fontWeight="bold" as="span">
+            <Text fontWeight="bold" as="span" color="brand.500">
               fodas ✌️
             </Text>
           </Text>
@@ -79,7 +79,7 @@ export default function Login() {
         <Text textAlign="center">
           Não possui conta?{" "}
           <NextLink href="/register">
-            <Button as="a" variant="link">
+            <Button as="a" variant="link" colorScheme="brand">
               Cadastrar-se
             </Button>
           </NextLink>
