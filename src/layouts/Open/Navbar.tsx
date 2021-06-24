@@ -21,6 +21,7 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons";
+import NextLink from "next/link";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
@@ -72,28 +73,20 @@ export default function WithSubnavigation() {
           direction={"row"}
           spacing={6}
         >
-          <Button
-            as={"a"}
-            fontSize={"sm"}
-            fontWeight={400}
-            variant={"link"}
-            href={"#"}
-          >
-            Sign In
-          </Button>
-          <Button
-            display={{ base: "none", md: "inline-flex" }}
-            fontSize={"sm"}
-            fontWeight={600}
-            color={"white"}
-            bg={"pink.400"}
-            href={"#"}
-            _hover={{
-              bg: "pink.300",
-            }}
-          >
-            Sign Up
-          </Button>
+          <NextLink href="/login">
+            <Button as={"a"} fontSize={"sm"} variant={"link"}>
+              Entrar
+            </Button>
+          </NextLink>
+          <NextLink href="/register">
+            <Button
+              display={{ base: "none", md: "inline-flex" }}
+              colorScheme="teal"
+              as="a"
+            >
+              Cadastrar-se
+            </Button>
+          </NextLink>
         </Stack>
       </Flex>
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { GetServerSideProps } from "next";
+import NextLink from "next/link";
 import {
   Flex,
   Box,
@@ -75,6 +76,14 @@ export default function Login() {
             </Button>
           </Stack>
         </Box>
+        <Text textAlign="center">
+          Não possui conta?{" "}
+          <NextLink href="/register">
+            <Button as="a" variant="link">
+              Cadastrar-se
+            </Button>
+          </NextLink>
+        </Text>
       </Stack>
     </Flex>
   );

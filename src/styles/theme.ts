@@ -7,6 +7,9 @@ const theme = extendTheme({
       baseStyle: {
         fontWeight: "bold", // Normally, it is "semibold"
         borderRadius: "lg",
+        _hover: {
+          cursor: "pointer",
+        },
       },
     },
   },
