@@ -54,8 +54,6 @@ const html = ({ url, site, email }) => {
 // Email text body – fallback for email clients that don't render HTML
 const text = ({ url, site }) => `Entrar em ${site}\n${url}\n\n`;
 
-export { html, text };
-
 const customVerificationRequest = ({
   identifier: email,
   url,
@@ -73,7 +71,7 @@ const customVerificationRequest = ({
         to: email,
         from,
         subject: `Entrar em ${site}`,
-        text: text({ url, site, email }),
+        text: text({ url, site }),
         html: html({ url, site, email }),
       },
       (error) => {
