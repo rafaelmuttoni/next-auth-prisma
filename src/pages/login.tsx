@@ -2,26 +2,37 @@ import { useState } from "react";
 import { GetServerSideProps } from "next";
 import NextLink from "next/link";
 import {
-  Flex,
   Box,
-  Divider,
-  Stack,
   Button,
+  Divider,
+  Flex,
+  FormControl,
+  FormHelperText,
+  FormLabel,
   Heading,
+  Input,
+  Stack,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { FcGoogle } from "react-icons/fc";
-import { FaFacebook, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaAngleRight } from "react-icons/fa";
 import { signIn, getSession } from "../services/auth";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleGoogleClick = () => {
+  const handleLoginClick = async (provider: string, email?: string) => {
     setLoading(true);
-    signIn("google", null);
+
+    if (email) {
+      const res = await signIn(provider, email);
+      console.log(res);
+    } else {
+      const res = await signIn(provider, null);
+      console.log(res);
+    }
   };
 
   return (
@@ -52,10 +63,17 @@ export default function Login() {
               w={"full"}
               variant={"outline"}
               leftIcon={<FcGoogle />}
-              onClick={handleGoogleClick}
+              onClick={() => handleLoginClick("google")}
               isLoading={loading}
             >
               <Text>Fazer Login com Google</Text>
+            </Button>
+            <Button
+              w={"full"}
+              colorScheme={"facebook"}
+              leftIcon={<FaFacebook />}
+            >
+              <Text>Entrar com Facebook</Text>
             </Button>
             <Flex alignItems="center">
               <Divider />
@@ -64,15 +82,25 @@ export default function Login() {
               </Text>
               <Divider />
             </Flex>
+            <FormControl id="email">
+              <FormLabel>Qual o seu e-mail?</FormLabel>
+              <Input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="ronaldinho@gaucho.com.br"
+              />
+              <FormHelperText>
+                Enviaremos um link para você confirmar o seu e-mail.
+              </FormHelperText>
+            </FormControl>
             <Button
               w={"full"}
-              colorScheme={"facebook"}
-              leftIcon={<FaFacebook />}
+              colorScheme="brand"
+              rightIcon={<FaAngleRight />}
+              onClick={() => handleLoginClick("email", email)}
             >
-              <Text>Entrar com Facebook</Text>
-            </Button>
-            <Button w="full" colorScheme="twitter" leftIcon={<FaTwitter />}>
-              Entrar com Twitter
+              <Text>Continuar com E-mail</Text>
             </Button>
           </Stack>
         </Box>

@@ -5,21 +5,19 @@ import {
   useSession,
 } from "next-auth/client";
 
-type emailProps = {
-  email: String;
-};
-
-function signIn(provider: string, email: emailProps | null) {
+async function signIn(provider: string, email: string | null) {
   if (email) {
-    return nextAuthSignIn(provider, {
+    const response = await nextAuthSignIn(provider, {
       email,
-      callbackUrl: `${process.env.NEXTAUTH_URL}/dashboard`,
+      redirect: false,
     });
+    return response;
   }
 
-  return nextAuthSignIn(provider, {
-    callbackUrl: `${process.env.NEXTAUTH_URL}/dashboard`,
+  const response = await nextAuthSignIn(provider, {
+    redirect: false,
   });
+  return response;
 }
 
 function signOut() {
