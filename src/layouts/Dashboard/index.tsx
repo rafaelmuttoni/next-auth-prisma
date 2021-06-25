@@ -1,13 +1,13 @@
 import { Box } from "@chakra-ui/react";
 import { useSession } from "../../services/auth";
 
-import Navbar from "./Navbar";
+import Navbar from "../../components/Navbar";
 import Loading from "../../components/Loading";
 
 function Wrapper({ children }) {
   return (
     <Box h={[null, null, "100vh"]}>
-      <Navbar />
+      <Navbar layout="dashboard" />
       {children}
     </Box>
   );

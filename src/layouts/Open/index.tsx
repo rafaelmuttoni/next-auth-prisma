@@ -1,10 +1,10 @@
 import { Box } from "@chakra-ui/react";
-import Navbar from "./Navbar";
+import Navbar from "../../components/Navbar";
 
 export default function OpenLayout({ children }) {
   return (
     <Box>
-      <Navbar />
+      <Navbar layout="open" />
       {children}
     </Box>
   );

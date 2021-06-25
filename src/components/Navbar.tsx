@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Box,
   Flex,
   Text,
@@ -8,11 +9,15 @@ import {
   Collapse,
   Icon,
   Link,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
   Popover,
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react";
 import {
@@ -23,7 +28,15 @@ import {
 } from "@chakra-ui/icons";
 import NextLink from "next/link";
 
-export default function WithSubnavigation() {
+import Logo from "./Logo";
+import { signOut } from "../services/auth";
+
+interface NavbarProps {
+  layout: string;
+  routes?: Array<string>;
+}
+
+export default function WithSubnavigation({ layout, routes }: NavbarProps) {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -54,40 +67,64 @@ export default function WithSubnavigation() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <Text
-            textAlign={useBreakpointValue({ base: "center", md: "left" })}
-            fontFamily={"heading"}
-            color={useColorModeValue("gray.800", "white")}
-          >
-            Logo
-          </Text>
+          <Logo />
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
           </Flex>
         </Flex>
 
-        <Stack
-          flex={{ base: 1, md: 0 }}
-          justify={"flex-end"}
-          direction={"row"}
-          spacing={6}
-        >
-          <NextLink href="/login">
-            <Button as={"a"} fontSize={"sm"} variant={"link"}>
-              Entrar
-            </Button>
-          </NextLink>
-          <NextLink href="/register">
-            <Button
-              display={{ base: "none", md: "inline-flex" }}
-              colorScheme="brand"
-              as="a"
-            >
-              Cadastrar-se
-            </Button>
-          </NextLink>
-        </Stack>
+        {layout === "dashboard" ? (
+          <Flex
+            flex={{ base: 1, md: 0 }}
+            alignItems={"center"}
+            justifyContent="flex-end"
+          >
+            <Menu>
+              <MenuButton
+                as={Button}
+                rounded={"full"}
+                variant={"link"}
+                cursor={"pointer"}
+              >
+                <Avatar
+                  size={"sm"}
+                  src={
+                    "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
+                  }
+                />
+              </MenuButton>
+              <MenuList>
+                <MenuItem>Link 1</MenuItem>
+                <MenuItem>Link 2</MenuItem>
+                <MenuDivider />
+                <MenuItem onClick={() => signOut()}>Sign out</MenuItem>
+              </MenuList>
+            </Menu>
+          </Flex>
+        ) : (
+          <Stack
+            flex={{ base: 1, md: 0 }}
+            justify={"flex-end"}
+            direction={"row"}
+            spacing={6}
+          >
+            <NextLink href="/login">
+              <Button as={"a"} fontSize={"sm"} variant={"link"}>
+                Entrar
+              </Button>
+            </NextLink>
+            <NextLink href="/register">
+              <Button
+                display={{ base: "none", md: "inline-flex" }}
+                colorScheme="brand"
+                as="a"
+              >
+                Cadastrar-se
+              </Button>
+            </NextLink>
+          </Stack>
+        )}
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
