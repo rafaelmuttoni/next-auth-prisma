@@ -18,7 +18,7 @@ const html = ({ url, site, email }) => {
 
   // Uses tables for layout and inline CSS due to email client limitations
   return `
-<body style="background: ${backgroundColor};">
+<body style="padding-top: 10px; padding-bottom: 50px; background: ${backgroundColor};">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td align="center" style="padding: 10px 0px 20px 0px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; color: ${textColor};">
