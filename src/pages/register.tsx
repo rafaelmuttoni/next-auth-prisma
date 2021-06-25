@@ -1,5 +1,5 @@
 import { GetServerSideProps } from "next";
-import { getSession } from "../services/auth";
+import { getSession } from "next-auth/client";
 
 import LoginForm from "../components/LoginForm";
 

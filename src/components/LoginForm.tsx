@@ -13,29 +13,56 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook, FaAngleRight } from "react-icons/fa";
-import { signIn } from "../services/auth";
+import { signIn } from "next-auth/client";
+import { useRouter } from "next/router";
 
 type LoginFormProps = {
   register?: boolean;
 };
 
 export default function LoginForm({ register }: LoginFormProps) {
+  const toast = useToast();
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean | string>(false);
 
   const handleLoginClick = async (provider: string, email?: string) => {
-    setLoading(true);
+    setLoading(provider);
 
-    if (email) {
-      const res = await signIn(provider, email);
-      console.log(res);
-    } else {
-      const res = await signIn(provider, null);
-      console.log(res);
+    try {
+      const res = await signIn(provider, {
+        redirect: false,
+        email: email ? email : null,
+      });
+
+      if (email && res) {
+        toast({
+          title: "Link de confirmação enviado.",
+          description:
+            "Entre no e-mail informado e clique no link para verificar.",
+          status: "info",
+        });
+      }
+
+      setLoading(false);
+      router.push("/dashboard");
+
+      return;
+    } catch (err) {
+      console.log(err);
     }
+
+    toast({
+      title: "Ocorreu um erro na sua autenticação.",
+      description: "Caso precise de ajude, entre em contato.",
+      status: "error",
+    });
+    setLoading(false);
   };
 
   return (
@@ -69,7 +96,8 @@ export default function LoginForm({ register }: LoginFormProps) {
               variant={"outline"}
               leftIcon={<FcGoogle />}
               onClick={() => handleLoginClick("google")}
-              isLoading={loading}
+              disabled={Boolean(loading)}
+              isLoading={loading === "google"}
             >
               <Text>{register ? "Cadastrar" : "Fazer Login"} com Google</Text>
             </Button>
@@ -77,6 +105,8 @@ export default function LoginForm({ register }: LoginFormProps) {
               w={"full"}
               colorScheme={"facebook"}
               leftIcon={<FaFacebook />}
+              disabled={Boolean(loading)}
+              isLoading={loading === "facebook"}
             >
               <Text>{register ? "Cadastrar" : "Entrar"} com Facebook</Text>
             </Button>
@@ -104,6 +134,8 @@ export default function LoginForm({ register }: LoginFormProps) {
               colorScheme="brand"
               rightIcon={<FaAngleRight />}
               onClick={() => handleLoginClick("email", email)}
+              disabled={Boolean(loading)}
+              isLoading={loading === "email"}
             >
               <Text>Continuar com E-mail</Text>
             </Button>

@@ -29,7 +29,7 @@ import {
 import NextLink from "next/link";
 
 import Logo from "./Logo";
-import { signOut } from "../services/auth";
+import { signOut } from "next-auth/client";
 
 interface NavbarProps {
   layout: string;

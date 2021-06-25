@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
 import DashboardLayout from "../../layouts/Dashboard";
-import { getSession } from "../../services/auth";
+import { getSession } from "next-auth/client";
 
 export default function Dashboard({ session }) {
   return <DashboardLayout session={session}>Dashboard</DashboardLayout>;
