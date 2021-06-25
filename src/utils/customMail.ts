@@ -76,10 +76,10 @@ const customVerificationRequest = ({
       },
       (error) => {
         if (error) {
-          logger.error("SEND_VERIFICATION_EMAIL_ERROR", email, error);
-          return reject(new Error("SEND_VERIFICATION_EMAIL_ERROR", error));
+          console.error("SEND_VERIFICATION_EMAIL_ERROR", email, error);
+          return reject(new Error("SEND_VERIFICATION_EMAIL_ERROR"));
         }
-        return resolve();
+        return resolve("Ok");
       }
     );
   });
