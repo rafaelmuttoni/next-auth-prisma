@@ -79,7 +79,7 @@ export default function HeroSection() {
                 top={["-15px", "-15px", "-25px"]}
                 transform={"rotate(10deg)"}
               >
-                Planos a partir de R$ 9,90
+                Teste Gratuitamente
               </Text>
             </Box>
           </Stack>

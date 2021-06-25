@@ -1,13 +1,19 @@
+import { ReactNode } from "react";
 import { Box } from "@chakra-ui/react";
 import { useSession } from "../../services/auth";
 
 import Navbar from "../../components/Navbar";
 import Loading from "../../components/Loading";
 
-function Wrapper({ children }) {
+interface WrapperProps {
+  children: ReactNode;
+  avatar?: string;
+}
+
+function Wrapper({ children, avatar }: WrapperProps) {
   return (
     <Box h={[null, null, "100vh"]}>
-      <Navbar layout="dashboard" />
+      <Navbar layout="dashboard" avatar={avatar} />
       {children}
     </Box>
   );
@@ -28,5 +34,5 @@ export default function DashboardLayout({ children }) {
     return <Wrapper>Sorry, you're not authenticated.</Wrapper>;
   }
 
-  return <Wrapper>{children}</Wrapper>;
+  return <Wrapper avatar={session.user?.image}>{children}</Wrapper>;
 }
