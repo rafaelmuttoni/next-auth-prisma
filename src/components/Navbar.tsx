@@ -116,8 +116,8 @@ export default function WithSubnavigation({ layout, routes }: NavbarProps) {
             </NextLink>
             <NextLink href="/register">
               <Button
+                variant="filled"
                 display={{ base: "none", md: "inline-flex" }}
-                colorScheme="brand"
                 as="a"
               >
                 Cadastrar-se

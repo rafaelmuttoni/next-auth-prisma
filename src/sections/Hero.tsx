@@ -1,4 +1,5 @@
 import Head from "next/head";
+import NextLink from "next/link";
 import {
   chakra,
   Box,
@@ -35,16 +36,16 @@ export default function HeroSection() {
             lineHeight={"110%"}
           >
             Podcast profissional <br />
-            <Text as={"span"} color={"green.400"}>
-              com preços de amadores
+            <Text as={"span"} color={"brand.400"}>
+              com preço de amador
             </Text>
           </Heading>
           <Text color={"gray.500"}>
             Tenha toda infraestrutura e funcionalidades de gigantes da indústria{" "}
             <chakra.span fontStyle="italic" color="gray.600">
               (como o Flow Podcast)
-            </chakra.span>{" "}
-            e pague barato pra c@#$%*@ 🙈.
+            </chakra.span>
+            <br />e pague barato pra c@#$%*@ 🙈.
           </Text>
           <Stack
             direction={"column"}
@@ -53,17 +54,11 @@ export default function HeroSection() {
             alignSelf={"center"}
             position={"relative"}
           >
-            <Button
-              colorScheme={"green"}
-              bg={"green.400"}
-              rounded={"full"}
-              px={6}
-              _hover={{
-                bg: "green.500",
-              }}
-            >
-              Cadastre seu Podcast
-            </Button>
+            <NextLink href="/register">
+              <Button variant="filled" rounded={"full"} px={6} as="a">
+                Cadastre seu Podcast
+              </Button>
+            </NextLink>
             <Button variant={"link"} colorScheme={"blue"} size={"sm"}>
               Conheça mais
             </Button>

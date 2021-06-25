@@ -79,7 +79,7 @@ export default function Login() {
         <Text textAlign="center">
           Não possui conta?{" "}
           <NextLink href="/register">
-            <Button as="a" variant="link" colorScheme="brand">
+            <Button as="a" variant="link">
               Cadastrar-se
             </Button>
           </NextLink>
