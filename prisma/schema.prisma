@@ -49,10 +49,6 @@ model User {
   updatedAt     DateTime  @updatedAt
   accounts      Account[]
   sessions      Session[]
-  ownedChannels ChannelAdmin[]
-  followingChannels   ChannelFollower[]
-  purchases PurchaseHistory[]
-  transactions EpisodeTransaction[]
 }
 
 model VerificationRequest {
@@ -67,63 +63,3 @@ model VerificationRequest {
 }
 
 // ENDING NEXT AUTH RECOMMENDED MODELS
-
-
-model Channel {
-  id         Int        @id @default(autoincrement())
-  title      String
-  slug       String @unique
-  admins     ChannelAdmin[]
-  followers ChannelFollower[]
-  purchases PurchaseHistory[]
-  episode Episode[]
-}
-
-model ChannelAdmin {
-  user        User     @relation(fields: [userId], references: [id])
-  userId      Int     
-  channel    Channel @relation(fields: [channelId], references: [id])
-  channelId  Int      
-  @@id([userId, channelId])
-}
-
-model ChannelFollower {
-  user        User     @relation(fields: [userId], references: [id])
-  userId      Int     
-  channel    Channel @relation(fields: [channelId], references: [id])
-  channelId  Int      
-  @@id([userId, channelId])
-}
-
-
-model Episode {
-  id         Int      @id @default(autoincrement())
-  title String
-  description String
-  date     DateTime  @default(now())
-  channelId Int
-  channel    Channel     @relation(fields: [channelId], references: [id])
-  transactions EpisodeTransaction[]
-}
-
-model EpisodeTransaction {
-  id         Int      @id @default(autoincrement())
-  episodeId Int
-  userId Int
-  amount   Int
-  type String
-  user    User     @relation(fields: [userId], references: [id])
-  episode    Episode     @relation(fields: [episodeId], references: [id])
-}
-
-model PurchaseHistory {
-  id         Int      @id @default(autoincrement())
-  channelId Int
-  userId Int
-  amount   Int
-  price Int
-  currency String
-  user    User     @relation(fields: [userId], references: [id])
-  channel    Channel     @relation(fields: [channelId], references: [id])
-}
-
