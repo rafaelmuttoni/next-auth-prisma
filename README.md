@@ -1,7 +1,7 @@
 
 # Next.js Fullstack Boilerplate
 
-A boilerplate with Next.js, Next-Auth and Prisma.
+A boilerplate with Next.js, NextAuth and Prisma.
 
 ## 🚀  Tech Stack
 
@@ -20,7 +20,7 @@ Required to connect with Prisma
 
 `DATABASE_URL` 
 
-Canonical URL of the website required for Next-auth.
+Canonical URL of the website required for NextAuth.
 
 `NEXTAUTH_URL`
 
@@ -49,6 +49,8 @@ $ cd next-auth-prisma
 
 # Install dependencies
 $ npm i
+
+# You have to setup a database and connect with Prisma to run the migrations. I recommend following Prisma's documentation.
 
 # Run development server
 $ npm run dev
