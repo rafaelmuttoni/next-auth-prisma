@@ -29,21 +29,21 @@ const html = ({ url, site, email }) => {
   <table width="100%" border="0" cellspacing="20" cellpadding="0" style="background: ${mainBackgroundColor}; max-width: 600px; margin: auto; border-radius: 10px;">
     <tr>
       <td align="center" style="padding: 10px 0px 0px 0px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; color: ${textColor};">
-        Entrar com <strong>${escapedEmail}</strong>
+        Join with <strong>${escapedEmail}</strong>
       </td>
     </tr>
     <tr>
       <td align="center" style="padding: 20px 0;">
         <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td align="center" style="border-radius: 5px;" bgcolor="${buttonBackgroundColor}"><a href="${url}" target="_blank" style="font-size: 18px; font-family: Helvetica, Arial, sans-serif; color: ${buttonTextColor}; text-decoration: none; text-decoration: none;border-radius: 5px; padding: 10px 20px; border: 1px solid ${buttonBorderColor}; display: inline-block; font-weight: bold;">Entrar</a></td>
+            <td align="center" style="border-radius: 5px;" bgcolor="${buttonBackgroundColor}"><a href="${url}" target="_blank" style="font-size: 18px; font-family: Helvetica, Arial, sans-serif; color: ${buttonTextColor}; text-decoration: none; text-decoration: none;border-radius: 5px; padding: 10px 20px; border: 1px solid ${buttonBorderColor}; display: inline-block; font-weight: bold;">Join</a></td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
       <td align="center" style="padding: 0px 0px 10px 0px; font-size: 16px; line-height: 22px; font-family: Helvetica, Arial, sans-serif; color: ${textColor};">
-        Se você não solicitou esse email pode ignorá-lo.
+        If you didn't request this email you can just ignore it.
       </td>
     </tr>
   </table>
@@ -52,7 +52,7 @@ const html = ({ url, site, email }) => {
 };
 
 // Email text body – fallback for email clients that don't render HTML
-const text = ({ url, site }) => `Entrar em ${site}\n${url}\n\n`;
+const text = ({ url, site }) => `Join ${site}\n${url}\n\n`;
 
 const customVerificationRequest = ({
   identifier: email,
@@ -70,7 +70,7 @@ const customVerificationRequest = ({
       {
         to: email,
         from,
-        subject: `Entrar em ${site}`,
+        subject: `Join ${site}`,
         text: text({ url, site }),
         html: html({ url, site, email }),
       },
