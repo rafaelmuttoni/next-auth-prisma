@@ -75,12 +75,12 @@ export default function LoginForm({ register }: LoginFormProps) {
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
           <Heading fontSize={"4xl"}>
-            {register ? "Crie" : "Entre na"} sua conta
+            {register ? "Create" : "Login on"} your account
           </Heading>
           <Text fontSize={"lg"} color={"gray.600"}>
-            para aproveitar todas nossas funcionalidades{" "}
+            to enjoy all our {" "}
             <Text fontWeight="bold" as="span" color="brand.600">
-              fodas ✌️
+            kick-ass functionalities ✌️
             </Text>
           </Text>
         </Stack>
@@ -99,7 +99,7 @@ export default function LoginForm({ register }: LoginFormProps) {
               disabled={Boolean(loading)}
               isLoading={loading === "google"}
             >
-              <Text>{register ? "Cadastrar" : "Fazer Login"} com Google</Text>
+              <Text>{register ? "Register" : "Login"} with Google</Text>
             </Button>
             <Button
               w={"full"}
@@ -108,17 +108,17 @@ export default function LoginForm({ register }: LoginFormProps) {
               disabled={Boolean(loading)}
               isLoading={loading === "facebook"}
             >
-              <Text>{register ? "Cadastrar" : "Entrar"} com Facebook</Text>
+              <Text>{register ? "Register" : "Login"} with Facebook</Text>
             </Button>
             <Flex alignItems="center">
               <Divider />
               <Text color="gray.600" mx="2">
-                ou
+                or
               </Text>
               <Divider />
             </Flex>
             <FormControl id="email">
-              <FormLabel>Qual o seu e-mail?</FormLabel>
+              <FormLabel>What's your e-mail?</FormLabel>
               <Input
                 type="email"
                 value={email}
@@ -126,7 +126,7 @@ export default function LoginForm({ register }: LoginFormProps) {
                 placeholder="ronaldinho@gaucho.com.br"
               />
               <FormHelperText>
-                Enviaremos um link para você confirmar o seu e-mail.
+                We'll send you a link to verify your e-mail.
               </FormHelperText>
             </FormControl>
             <Button
@@ -137,15 +137,15 @@ export default function LoginForm({ register }: LoginFormProps) {
               disabled={Boolean(loading)}
               isLoading={loading === "email"}
             >
-              <Text>Continuar com E-mail</Text>
+              <Text>Continue with E-mail</Text>
             </Button>
           </Stack>
         </Box>
         <Text textAlign="center">
-          {register ? "Já" : "Não"} possui conta?{" "}
+          {register ? "Already have" : "Don't have"} an account?{" "}
           <NextLink href={register ? "/login" : "/register"}>
             <Button as="a" variant="link">
-              {register ? "Fazer login" : "Cadastrar-se"}
+              {register ? "Login" : "Register"}
             </Button>
           </NextLink>
         </Text>

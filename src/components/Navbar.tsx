@@ -111,7 +111,7 @@ export default function WithSubnavigation({
           >
             <NextLink href="/login">
               <Button as={"a"} fontSize={"sm"} variant={"link"}>
-                Entrar
+                Login
               </Button>
             </NextLink>
             <NextLink href="/register">
@@ -120,7 +120,7 @@ export default function WithSubnavigation({
                 display={{ base: "none", md: "inline-flex" }}
                 as="a"
               >
-                Cadastrar-se
+               Register
               </Button>
             </NextLink>
           </Stack>

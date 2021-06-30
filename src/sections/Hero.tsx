@@ -1,7 +1,5 @@
 import Head from "next/head";
-import NextLink from "next/link";
 import {
-  chakra,
   Box,
   Heading,
   Container,
@@ -23,63 +21,62 @@ export default function HeroSection() {
         />
       </Head>
 
-      <Container maxW={"3xl"}>
+      <Container maxW={'3xl'}>
         <Stack
           as={Box}
-          textAlign={"center"}
+          textAlign={'center'}
           spacing={{ base: 8, md: 14 }}
-          py={{ base: 20, md: 36 }}
-        >
+          py={{ base: 20, md: 36 }}>
           <Heading
             fontWeight={600}
-            fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
-            lineHeight={"110%"}
-          >
-            Podcast profissional <br />
-            <Text as={"span"} color={"brand.400"}>
-              com preço de amador
+            fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+            lineHeight={'110%'}>
+            Make money from <br />
+            <Text as={'span'} color={'green.400'}>
+              your audience
             </Text>
           </Heading>
-          <Text color={"gray.500"}>
-            Tenha toda infraestrutura e funcionalidades de gigantes da indústria{" "}
-            <chakra.span fontStyle="italic" color="gray.600">
-              (como o Flow Podcast)
-            </chakra.span>
-            <br />e pague barato pra c@#$%*@ 🙈.
+          <Text color={'gray.500'}>
+            Monetize your content by charging your most loyal readers and reward
+            them loyalty points. Give back to your loyal readers by granting
+            them access to your pre-releases and sneak-peaks.
           </Text>
           <Stack
-            direction={"column"}
+            direction={'column'}
             spacing={3}
-            align={"center"}
-            alignSelf={"center"}
-            position={"relative"}
-          >
-            <NextLink href="/register">
-              <Button variant="filled" rounded={"full"} px={6} as="a">
-                Cadastre seu Podcast
-              </Button>
-            </NextLink>
-            <Button variant={"link"} colorScheme={"blue"} size={"sm"}>
-              Conheça mais
+            align={'center'}
+            alignSelf={'center'}
+            position={'relative'}>
+            <Button
+              colorScheme={'green'}
+              bg={'green.400'}
+              rounded={'full'}
+              px={6}
+              _hover={{
+                bg: 'green.500',
+              }}>
+              Get Started
+            </Button>
+            <Button variant={'link'} colorScheme={'blue'} size={'sm'}>
+              Learn more
             </Button>
             <Box>
               <Icon
                 as={Arrow}
-                color={useColorModeValue("gray.800", "gray.300")}
+                color={useColorModeValue('gray.800', 'gray.300')}
                 w={71}
-                position={"absolute"}
+                position={'absolute'}
                 right={-71}
-                top={"10px"}
+                top={'10px'}
               />
               <Text
-                fontSize={["md", "md", "lg"]}
-                fontFamily={"Caveat"}
-                position={"absolute"}
-                right={"-125px"}
-                top={["-15px", "-15px", "-25px"]}
-                transform={"rotate(10deg)"}
-              >
-                Teste Gratuitamente
+                fontSize={'lg'}
+                fontFamily={'Caveat'}
+                position={'absolute'}
+                right={'-125px'}
+                top={'-15px'}
+                transform={'rotate(10deg)'}>
+                Starting at $15/mo
               </Text>
             </Box>
           </Stack>
